@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 3rd Anniversary Nandu ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Poppins, sans-serif;background:#000;color:#fff;overflow:hidden}
+
+    /* 🎬 Netflix-style Intro */
+    .intro{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:10;flex-direction:column}
+    .logo{font-weight:800;font-size:4rem;letter-spacing:8px;color:#e50914;opacity:0}
+
+    /* 🌌 Background */
+    #bg{position:fixed;inset:0;z-index:-1;background: radial-gradient(circle at bottom, #020111 0%, #000 70%);}    
+
+    /* ⭐ Stars */
+    .star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;animation:twinkle 2s infinite alternate}
+    @keyframes twinkle{from{opacity:.2}to{opacity:1}}
+
+    /* 💖 Main Center */
+    .center{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;opacity:0}
+    h1{font-family:'Great Vibes',cursive;font-size:5rem}
+    h2{font-weight:300;margin-top:10px}
+    .date{color:#ffb3d9;margin-top:8px}
+    .btn{margin-top:40px;padding:16px 34px;border-radius:999px;border:none;background:linear-gradient(45deg,#ff4d9d,#7a5cff);color:white;font-size:1.2rem;cursor:pointer}
+
+    /* 📖 Love Story Timeline */
+    .timeline{position:fixed;inset:0;background:rgba(0,0,0,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+    .event{margin:20px;font-size:1.4rem;opacity:0}
+
+    /* 💌 Letter */
+    .message{position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+    .card{max-width:700px;padding:40px;border-radius:24px;background:rgba(255,255,255,.08);text-align:center}
+
+    /* 💍 Proposal */
+    .proposal{position:fixed;inset:0;background:black;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;text-align:center}
+    .ring{font-size:90px;animation:pulse 1.5s infinite}
+    .choice{margin-top:30px;display:flex;gap:20px}
+    .yes,.no{padding:14px 28px;border-radius:999px;border:none;font-size:1.1rem;cursor:pointer}
+    .yes{background:linear-gradient(45deg,#ff4d9d,#7a5cff);color:#fff}
+    .no{background:#222;color:#fff;position:relative}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+  </style>
+</head>
+<body>
+
+  <!-- 🎵 Music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8c6e0e9c4c.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- 🎬 Intro -->
+  <div class="intro" id="intro">
+    <div class="logo">R ❤️ N</div>
+  </div>
+
+  <div id="bg"></div>
+
+  <!-- 💖 Main -->
+  <div class="center" id="main">
+    <h1>Happy 3rd Anniversary Nandu ❤️</h1>
+    <h2>You Are My Forever ✨</h2>
+    <div class="date">21 February</div>
+    <button class="btn" id="start">Our Love Story 📖</button>
+  </div>
+
+  <!-- 📖 Timeline -->
+  <div class="timeline" id="timeline">
+    <div class="event">💬 The Day We First Talked</div>
+    <div class="event">😊 The First Smile You Gave Me</div>
+    <div class="event">❤️ The Day I Fell For You</div>
+    <div class="event">💞 Today — 3 Beautiful Years</div>
+  </div>
+
+  <!-- 💌 Letter -->
+  <div class="message" id="message">
+    <div class="card">
+      <h2>My Dearest Nandu ❤️</h2>
+      <p>Every moment with you is my favorite memory. Thank you for making my life magical. I love you forever. 💖</p>
+      <button class="btn" id="final">One Last Surprise 💍</button>
+    </div>
+  </div>
+
+  <!-- 💍 Proposal -->
+  <div class="proposal" id="proposal">
+    <div class="ring">💍</div>
+    <h1>Will You Stay Forever, Nandu? ❤️</h1>
+    <div class="choice">
+      <button class="yes" id="yes">Yes ❤️</button>
+      <button class="no" id="no">No 😢</button>
+    </div>
+  </div>
+
+  <script>
+    // ⭐ Stars
+    for(let i=0;i<120;i++){
+      const s=document.createElement('div');
+      s.className='star';
+      s.style.left=Math.random()*100+'vw';
+      s.style.top=Math.random()*100+'vh';
+      document.body.appendChild(s);
+    }
+
+    // 🎬 Intro animation
+    gsap.to('.logo',{opacity:1,scale:1.2,duration:1});
+    setTimeout(()=>{
+      gsap.to('#intro',{opacity:0,duration:1,onComplete:()=>document.getElementById('intro').style.display='none'});
+      gsap.to('#main',{opacity:1,duration:1});
+    },2000);
+
+    // 📖 Timeline
+    const timeline=document.getElementById('timeline');
+    document.getElementById('start').onclick=()=>{
+      gsap.to(timeline,{opacity:1,pointerEvents:'auto',duration:1});
+      gsap.utils.toArray('.event').forEach((el,i)=>{
+        gsap.to(el,{opacity:1,y:-10,delay:i*1});
+      });
+      setTimeout(()=>{
+        gsap.to(timeline,{opacity:0,pointerEvents:'none',duration:1});
+        gsap.to('#message',{opacity:1,pointerEvents:'auto',duration:1});
+      },5000);
+    }
+
+    // 💍 Final Proposal
+    document.getElementById('final').onclick=()=>{
+      gsap.to('#message',{opacity:0,pointerEvents:'none'});
+      gsap.to('#proposal',{opacity:1,pointerEvents:'auto',duration:1});
+    }
+
+    // 😈 Make "No" button run away on hover
+    const noBtn=document.getElementById('no');
+    noBtn.addEventListener('mouseover',()=>{
+      const x=Math.random()*(window.innerWidth-120);
+      const y=Math.random()*(window.innerHeight-60);
+      noBtn.style.position='absolute';
+      noBtn.style.left=x+'px';
+      noBtn.style.top=y+'px';
+    });
+
+    // ❤️ Yes button click
+    document.getElementById('yes').onclick=()=>{
+      document.querySelector('#proposal h1').innerText='Yayyyy ❤️ I Love You Nandu 💖';
+      document.querySelector('.choice').style.display='none';
+    };
+  </script>
+</body>
+</html>
